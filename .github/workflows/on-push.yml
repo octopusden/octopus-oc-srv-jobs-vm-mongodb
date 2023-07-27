@@ -1,0 +1,11 @@
+name: On push, deploying to Test
+
+on: [push]
+
+jobs:
+
+  build-push-docker-image:
+    uses: octopusden/octopus-base/.github/workflows/common-docker-build-deploy.yml@main
+    with:
+      tags: |
+        ghcr.io/${{ github.repository }}:${{ github.ref_name }}
